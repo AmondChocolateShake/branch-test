@@ -25,6 +25,11 @@
     box.addEventListener("mouseover",function(){
       box.style.setProperty("height","400px");
     })
+    //마우스가 해당 요소에서 떠났을때를 캐치하는 이벤트리스너.
+    //이때, 지정된 구문, 길이를 변환한다.
+    box.addEventListener("mouseout", function(){
+      box.style.setProperty("height","200px");
+    })
   </script>
 </body>
 </html>
