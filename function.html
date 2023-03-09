@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ...나머지 매개변수
+    // 함수 호출 시 tagName, props 외에 인수가 더 있다면 children 배열에 들어간다.
+    function elementMaker(tagName, props, ...children) {
+      // tagName을 인수로 하는 element를 생성한다.
+      const element = document.createElement(tagName);
+      // Object.keys(props) : props 객체의 키값들을 배열로 반환한다.
+      // Array.forEach(function()) 배열의 요소를 각각 실행한다.
+      Object.keys(props).forEach(function(key) {
+        // props의 키 값을 element 의 key 값에 대입한다.
+        element[key] = props[key];
+      });
+      // elementMaker(a, b, c, d, ...)
+      // elementMaker함수를 호출 할 때 인수의 갯수를 3개 이상 할 시 실행한다.
+      if (children.length > 0) {
+        // children 배열을 각각 실행
+        children.forEach(function(child) {
+          // children 배열의 값이 문자열이라면
+          if (typeof(child) === "string") {
+            // children 배열의 요소를 문자열로 만들어준다.
+            child = document.createTextNode(child);
+          }
+          // element에 생성된 문자열을 자식으로 넣어준다.
+          element.appendChild(child);
+        })
+      } 
+      return element;
+      
+    }
+
+    // div1의 키 값들이 div 의 키 값으로 대입되고 인수가 3 개 이상이므로
+    // 'a', '123', 'b'는 children배열로 들어간다.
+    // 'a', '123', 'b'는 문자열이므로 div의 자식 요소에 문자열이 추가된다.
+    console.log(elementMaker('div', 'div1', 'a', '123', 'b'));
+    
+    
+  </script>
+</body>
+</html>
