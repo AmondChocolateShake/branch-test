@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+    root.style.setProperty("width", "300px");
+    root.style.setProperty("height", "500px");
+    root.style.setProperty("background-color", "#c9c9c9");
+    root.style.setProperty("padding", "5px");
+    const box = document.createElement('div');
+    box.style.setProperty("width", "100%");
+    box.style.setProperty("height", "200px");
+    box.style.setProperty("background-color","#1fdf1f");
+    //이벤트가 발생시 변하는 아이템의 시간 조정
+    box.style.setProperty("transition", "height 1s");
+    root.appendChild(box)
+    //마우스가 위에 있을때 실행되는 구문. 길이를 변환한다.
+    box.addEventListener("mouseover",function(){
+      box.style.setProperty("height","400px");
+    })
+  </script>
+</body>
+</html>
